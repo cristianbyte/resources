@@ -1,0 +1,52 @@
+:root{
+    --global-color-0: #ffffff ;
+    --global-color-1: #0052d5 ;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--global-color-0);
+    width: 100vw;
+    height: 100vh;
+}
+
+.loader{
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: conic-gradient(from 0deg, transparent 10% ,  var(--global-color-1) 30% , transparent 50%);
+    animation: spin .5s linear infinite;
+
+}
+
+.loader::after{
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background-color: var(--global-color-0);
+}
+
+@keyframes spin {
+    0%{
+        transform: rotateX(0);
+    }
+    100%{
+        transform: rotate(1turn);
+    }
+}
