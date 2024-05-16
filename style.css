@@ -10,43 +10,155 @@
     font-family: monospace;
 }
 
+@font-face {
+    font-family: font;
+    src: url(./Sobiscuit.otf);
+}
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--global-color-0);
-    width: 100vw;
+body {
+    margin: 0;
     height: 100vh;
-}
-
-.loader{
-    position: relative;
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
+    width: 100vw;
+    background: #A0DEFF;
+    cursor: crosshair;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: conic-gradient(from 0deg, transparent 10% ,  var(--global-color-1) 30% , transparent 50%);
-    animation: spin .5s linear infinite;
-
+    flex-direction: column;
+    gap: 5rem;
+    overflow: hidden;
 }
 
-.loader::after{
-    content: '';
+canvas{
+    display:block;
     position: absolute;
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    background-color: var(--global-color-0);
 }
 
-@keyframes spin {
-    0%{
-        transform: rotateX(0);
-    }
-    100%{
-        transform: rotate(1turn);
-    }
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css");
+
+.svgIconCont {
+  display: none;
 }
+
+.textCont {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  z-index: 1;
+}
+
+.cat,.img{
+    position: absolute;
+    top: 50%;
+    left: 70%;
+}
+
+.img{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-20%);
+    z-index: 100;
+}
+.cat:nth-last-of-type(2){
+    left: 10%;
+    transform: scaleX(-1);
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: font;
+  font-size: 30vh;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: upDown 2.8s ease-in-out infinite;
+
+  &:nth-child(1) {
+    animation-delay: calc(0s + (0.2s * 1));
+    z-index: -1;
+  }
+  &:nth-child(2) {
+    animation-delay: calc(0s + (0.2s * 2));
+    z-index: -2;
+  }
+  &:nth-child(3) {
+    animation-delay: calc(0s + (0.2s * 3));
+    z-index: -3;
+  }
+  &:nth-child(4) {
+    animation-delay: calc(0s + (0.2s * 4));
+    z-index: -4;
+  }
+  &:nth-child(5) {
+    animation-delay: calc(0s + (0.2s * 5));
+    z-index: -5;
+  }
+  &:nth-child(6) {
+    animation-delay: calc(0s + (0.2s * 6));
+    z-index: -6;
+  }
+  &:nth-child(7) {
+    animation-delay: calc(0s + (0.2s * 7));
+    z-index: -7;
+  }
+}
+.icon {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  stroke-width: 15px;
+  stroke: oklch(10% 0 0);
+  transform: translate(-50%, -50%);
+  animation: rotateStars 5000ms linear infinite;
+
+  &:nth-child(1) {
+    top: 30%;
+    left: 0%;
+    animation-delay: 0;
+  }
+  &:nth-child(2) {
+    top: 55%;
+    left: 27%;
+    animation-delay: -250ms;
+  }
+  &:nth-child(3) {
+    top: 20%;
+    left: 60%;
+    animation-delay: -500ms;
+  }
+  &:nth-child(4) {
+    top: 56%;
+    left: 98%;
+    animation-delay: -750ms;
+  }
+}
+
+@keyframes upDown {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(-50%, -65%);
+  }
+  50% {
+    transform: translate(-50%, -35%);
+  }
+}
+@keyframes rotateStars {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
